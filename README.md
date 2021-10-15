@@ -4,14 +4,14 @@ This repository contains a telegraf external plugin that collects metrics from O
 
 ### Installation
 
-The plugin executes a python script to gather metrics. It requires proper installation of [python3](https://www.python.org/downloads/) with [cx_Oracle](https://cx-oracle.readthedocs.io/en/latest/user_guide/installation.html) extension module, which in turn also requires installation of [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client/downloads.html). The Oracle client might require extra environment variables, which must be set before `telegraf` is executed. 
+The plugin executes a python script to gather metrics. It requires proper installation of [python3](https://www.python.org/downloads/) with [cx_Oracle](https://cx-oracle.readthedocs.io/en/latest/user_guide/installation.html) extension module, which in turn also requires installation of [Oracle Client](https://www.oracle.com/database/technologies/instant-client/downloads.html). The Oracle client might require extra environment variables, which must be set before `telegraf` is executed. 
 
-- Clone the repository
+__Clone the repository__
 ```
 git clone git@github.com:bonitoo-io/telegraf-input-oracle.git
 ```
 
-- Modify telegraf configuration
+__Modify telegraf configuration__
 ```toml
 [[inputs.execd]]
   command = ["/path/to/telegraf-input-oracle/oracle_metrics.sh"]
@@ -21,7 +21,7 @@ Replace `/path/to/telegraf-input-oracle` with a directory of your clone. The
 `oracle_metrics.sh` executes the python script and also ensures that Oracle
 user password is not printed in telegraf logs.
 
-- Modify /path/to/telegraf-input-oracle/oracle_metrics.sh
+__Modify `/path/to/telegraf-input-oracle/oracle_metrics.sh`__
    * Modify [connection string](https://cx-oracle.readthedocs.io/en/latest/user_guide/connection_handling.html#connection-strings) to your database.
    * Modify username and password of your Oracle user with SELECT_CATALOG_ROLE role granted.
    * Modify the value of `instance` tag of the generated metrics.
@@ -29,6 +29,7 @@ user password is not printed in telegraf logs.
 ### Metrics
 
 ```
+$ cd /path/to/telegraf-input-oracle
 $ export LD_LIBRARY_PATH=/opt/oracle/client
 $ telegraf --config ./dev/telegraf.conf --input-filter execd --test
 > oracle_wait_class,instance=XE,wait_class=CPU wait_value=0.015 1634036614000000000
