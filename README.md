@@ -1,6 +1,6 @@
 # Oracle Input Plugin
 
-This repository contains a telegraf external plugin that collects metrics from Oracle RDBMS using Dynamic Performance Views. 
+This repository contains a [telegraf external plugin](https://github.com/influxdata/telegraf/blob/master/EXTERNAL_PLUGINS.md) that collects metrics from Oracle RDBMS using Dynamic Performance Views. 
 
 ### Installation
 
