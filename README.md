@@ -22,7 +22,7 @@ Replace `/path/to/telegraf-input-oracle` with a directory of your clone. The
 user password is not printed in telegraf logs.
 
 - Modify /path/to/telegraf-input-oracle/oracle_metrics.sh
-   * Modify [connection string](https://cx-oracle.readthedocs.io/en/latest/user_guide/connection_handling.html#connection-strings) to your database
+   * Modify [connection string](https://cx-oracle.readthedocs.io/en/latest/user_guide/connection_handling.html#connection-strings) to your database.
    * Modify username and password of your Oracle user with SELECT_CATALOG_ROLE role granted.
    * Modify the value of `instance` tag of the generated metrics.
 
