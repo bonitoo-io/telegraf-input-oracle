@@ -15,7 +15,7 @@ __Modify telegraf configuration__
 ```toml
 [[inputs.exec]]
   commands = ["/path/to/telegraf-input-oracle/oracle_metrics.sh"]
-  timeout = "10s"
+  timeout = "60s"
   data_format = "influx"
 ```
 Replace `/path/to/telegraf-input-oracle` with a directory of your clone. The 
