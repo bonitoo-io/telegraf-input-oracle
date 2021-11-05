@@ -13,9 +13,12 @@ git clone git@github.com:bonitoo-io/telegraf-input-oracle.git
 
 __Modify telegraf configuration__
 ```toml
-[[inputs.execd]]
-  command = ["/path/to/telegraf-input-oracle/oracle_metrics.sh"]
-  signal = "none"
+[[inputs.exec]]
+  commands = ["/path/to/telegraf-input-oracle/oracle_metrics.sh"]
+  timeout = "60s"
+  data_format = "influx"
+#  ## Execution interval, can override default interval setting in [agent] section
+#  interval = "60s"
 ```
 Replace `/path/to/telegraf-input-oracle` with a directory of your clone. The 
 `oracle_metrics.sh` executes the python script and also ensures that Oracle
@@ -31,7 +34,7 @@ __Modify `/path/to/telegraf-input-oracle/oracle_metrics.sh`__
 ```
 $ cd /path/to/telegraf-input-oracle
 $ export LD_LIBRARY_PATH=/opt/oracle/client
-$ telegraf --config ./dev/telegraf.conf --input-filter execd --test
+$ telegraf --config ./dev/telegraf.conf --input-filter exec --test
 > oracle_wait_class,instance=XE,wait_class=CPU wait_value=0.015 1634036614000000000
 > oracle_wait_class,instance=XE,wait_class=CPU_OS wait_value=0.522 1634036614000000000
 > oracle_wait_class,instance=XE,wait_class=Commit wait_value=0 1634036614000000000
