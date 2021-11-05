@@ -17,6 +17,8 @@ __Modify telegraf configuration__
   commands = ["/path/to/telegraf-input-oracle/oracle_metrics.sh"]
   timeout = "60s"
   data_format = "influx"
+#  ## Execution interval, can override default interval setting in [agent] section
+#  interval = "60s"
 ```
 Replace `/path/to/telegraf-input-oracle` with a directory of your clone. The 
 `oracle_metrics.sh` executes the python script and also ensures that Oracle
